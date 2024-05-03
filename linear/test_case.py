@@ -16,8 +16,8 @@ class TestCase():
     def __init__(self,data_name, X_train, y_train, X_test, y_test, C=3):
        self.data_name = data_name
        self.problems = ['even_odd', 'greater', 'zero']
-       #self.sgd_clf = [SGDClassifier() for i in range(C)]
-       self.sgd_clf = [CalibratedClassifierCV() for i in range(C)]
+       self.sgd_clf = [SGDClassifier() for i in range(C)]
+       #self.sgd_clf = [CalibratedClassifierCV() for i in range(C)]
        self.X_train = X_train
        self.y_train = y_train
        self.X_test = X_test
@@ -41,7 +41,8 @@ class TestCase():
                else:
                    print('[INFO:] training' + filename)
                    clf = SGDClassifier(random_state=42)
-                   self.sgd_clf[self.problems.index(c)] = CalibratedClassifierCV(clf, cv=5, method='sigmoid')
+                   self.sgd_clf[self.problems.index(c)] = clf #CalibratedClassifierCV(clf, cv=5, method='sigmoid')
+                   #self.sgd_clf[self.problems.index(c)] = CalibratedClassifierCV(clf, cv=5, method='sigmoid')
                    self.sgd_clf[self.problems.index(c)].fit(X_train, y_train)
                    pickle.dump(self.sgd_clf[self.problems.index(c)], open(filename, 'wb'))
                print(self.sgd_clf[self.problems.index(c)].score(X_test, y_test))

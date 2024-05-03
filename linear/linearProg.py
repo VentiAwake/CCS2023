@@ -8,6 +8,7 @@ from data_util import MNISTMultiLabelSample
 from test_case import TestCase
 from plot_bar import plot_acc
 from explainer import Explainer
+from pathlib import Path
 
 # construct argument parser
 import argparse
@@ -24,6 +25,12 @@ elif DATASET == 'fashion_mnist':
     data = tf.keras.datasets.fashion_mnist
 elif DATASET == 'face':
     lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
+
+# create model directory
+model_dir = './mnist_model'
+Path(model_dir).mkdir(exist_ok=True)
+plot_dir = './eps'
+Path(plot_dir).mkdir(exist_ok=True)
 
 if DATASET == 'mnist' or DATASET == 'fashion_mnist':
     (X_train, y_train), (X_test, y_test) = data.load_data()
@@ -109,7 +116,7 @@ for atk in attk_type:
         filename = prefix+DATASET+'_'+atk+'_attk'+str(ns)+'_imgs.eps'
         plt.savefig(filename, format='eps')
         #plt.show()
-        explainer = Explainer()
-        filename = prefix+DATASET+'_'+atk+'_attk'+str(ns)+'_shap_'
-        explainer.kernel_explain(test_case, X_train, X_test[n_start:n_start+n_attk_samples], adv_x, row, attk_mod, filename)
+        #explainer = Explainer()
+        #filename = prefix+DATASET+'_'+atk+'_attk'+str(ns)+'_shap_'
+        #explainer.kernel_explain(test_case, X_train, X_test[n_start:n_start+n_attk_samples], adv_x, row, attk_mod, filename)
 
