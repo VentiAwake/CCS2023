@@ -3,7 +3,7 @@ import dlib
 import torch
 from fastai import *
 from fastai.vision import *
-from fastai.layers import MSELossFlat, CrossEntropyFlat
+from fastai.losses import MSELossFlat #, CrossEntropyFlat
 from torchvision import transforms
 import warnings
 
