@@ -4,7 +4,7 @@ The repository contains a foolbox submodule (in "lib") with custom attacks prese
 
 You can create a Conda environment with the supplied yaml file "atk.yaml":
         
-        conda env create --name NAME --file atk.yaml 
+        conda env create --name NAME --file atk_environment.yml 
 
 where NAME is the name of the environment. Activate the environment, everything should run following the instructions below.
 
