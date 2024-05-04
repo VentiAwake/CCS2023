@@ -2,7 +2,7 @@ The repository contains a foolbox submodule (in "lib") with custom attacks prese
 
         git clone --recursive https://github.com/VentiAwake/CCS2023.git 
 
-You can create a Conda environment with the supplied yaml file "atk.yaml":
+You can create a Conda environment with the supplied yaml file "atk_environment.yaml":
         
         conda env create --name NAME --file atk_environment.yml 
 
